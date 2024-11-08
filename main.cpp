@@ -12,9 +12,9 @@ int main()
 
     struct car
     {
-        string name;
-        string model;
-        string color;
+        string name;//название
+        string model;//модель
+        string color;//цвет
         int speed; //лошадиные  силы(среднее)
         string type; // механика или автомат
 
@@ -23,7 +23,7 @@ int main()
     vector<car> myCar;
     car cars;
 
-    if(!file.is_open())
+    if(!file.is_open()) //проверка открыт ли файл
     {
         cout << "no open" << endl;
         return 1;
@@ -31,14 +31,14 @@ int main()
 
     while(!file.eof())
     {
-        file >> cars.name >> cars.model >> cars.color >> cars.speed >> cars.type;
+        file >> cars.name >> cars.model >> cars.color >> cars.speed >> cars.type; //добавление информации из файла в экземпляры вектора
         myCar.push_back(cars);
     }
-    file.close();
+    file.close();//закрытие файла
     myCar.pop_back(); //удаляет лишний элемент из вектора
 
-     string help_string(64, '_');
-    //3 пункт
+     string help_string(64, '_');//для красоты добавление палочек
+    //3 пункт - создание таблицы в терминале
     cout << "|" << help_string << "|" << endl;
     cout << "|" << setw(12) << "Name" << "|" << setw(12) << "Model"
          << "|" << setw(12) << "Color" << "|" << setw(12) << "Speed"
@@ -50,7 +50,7 @@ int main()
              << "|" << setw(12) << car.type << "|" << endl;
     }
     cout << "|" << help_string << "|" << endl;
-    //4 пункт
+    //4 пункт - создание широкой строки
     stringstream ss;
     for (const auto& car : myCar) {
         ss << "Name: " << car.name << endl;
@@ -64,7 +64,7 @@ int main()
     string s2 = ss.str();
     cout << "\n" << s2 << endl;
 
-    //5 пункт
+    //5 пункт - записаь в файл строки
     ofstream outputFile("cars_output.txt", ios::binary);
     string str = ss.str();
     outputFile.write(str.c_str(), str.length());
