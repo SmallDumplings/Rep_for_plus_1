@@ -1,5 +1,0 @@
-Third_lesson.depend
-Third_lesson.layout
-bin/
-cars_output.txt
-obj/
